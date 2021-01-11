@@ -1,5 +1,38 @@
 import axios from 'axios';
 
+export const CALL_START = 'CALL_START';
+export const CALL_S = 'CALL_S';
+export const CALL_F = 'CALL_F';
+export const ADD_SMURF = 'FETCHING_PIC_SUCCESS';
+export const SET_ERROR = 'FETCHING_PIC_FAIL';
+
+
+export const getSmurf = () => {
+    return (dispatch => {
+        dispatch({type:CALL_START});
+
+        axios
+        .get('http://localhost:3333/')
+        .then((res)=>{
+            console.log(res)
+            dispatch({type:CALL_S, payload: res.data})
+        })
+        .catch((err)=>{
+            dispatch({type:CALL_F, payload: err.response.message})
+        })
+    })
+} 
+export const addSmurf = (s, arr) => {
+    return (dispatch => {
+        dispatch({type:ADD_SMURF});
+     arr.push(s);
+})
+} 
+
+
+
+
+
 //Task List:
 //1. Add fetch smurfs action: 
 //              - fetch and return initial list of smurfs

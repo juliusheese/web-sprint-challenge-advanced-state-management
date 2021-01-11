@@ -14,11 +14,17 @@ const reducer = ()=>{
                 isFetching:true,
                 error:''
             })
-        case ('CALL_END'):
+        case ('CALL_S'):
             return ({
                 ...state,
                 isFetching: false,
                 smrf: action.payload,
+            })
+        case ('CALL_F'):
+            return ({
+                ...state,
+                isFetching: false,
+                error: action.payload,
             })
         case ('ADD_SMURF'):
             return { ...state };
