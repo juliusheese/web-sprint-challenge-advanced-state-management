@@ -9,25 +9,31 @@ export const SET_ERROR = 'FETCHING_PIC_FAIL';
 
 export const getSmurf = () => {
     return (dispatch => {
-        dispatch({type:CALL_START});
+        dispatch({ type: CALL_START });
 
         axios
-        .get('http://localhost:3333/')
-        .then((res)=>{
-            console.log(res)
-            dispatch({type:CALL_S, payload: res.data})
-        })
-        .catch((err)=>{
-            dispatch({type:CALL_F, payload: err.response.message})
-        })
+            .get('http://localhost:3333/')
+            .then((res) => {
+                console.log(res)
+                dispatch({ type: CALL_S, payload: res.data })
+            })
+            .catch((err) => {
+                dispatch({ type: CALL_F, payload: err.response.message })
+            })
     })
-} 
+}
 export const addSmurf = (s, arr) => {
     return (dispatch => {
-        dispatch({type:ADD_SMURF});
-     arr.push(s);
-})
-} 
+        dispatch({ type: ADD_SMURF });
+        arr.push(s);
+    })
+}
+export const setError = (ne, oe) => {
+    return (dispatch => {
+        dispatch({ type: SET_ERROR });
+        oe = ne;
+    })
+}
 
 
 
