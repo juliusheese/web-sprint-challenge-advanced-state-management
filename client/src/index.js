@@ -1,19 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+import App from './App';
+
+import { reducer } from './reducers';
+
+const store = createStore(reducer, applyMiddleware(thunk))
 
 
-const store = createStore(reducer);
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
 );
-
 //Task List:
 //1. Add in all necessary components and libary methods.
 //2. Create a store that includes thunk middleware support.
