@@ -1,8 +1,35 @@
 
 export const initialState = {
+    arrSmurf: [],
+    isLoading: false,
+    error: "An Error Has Occured"
 }
 
 const reducer = ()=>{
+    switch (action.type) {
+
+        case ('CALL_START'):
+            return ({
+                ...state,
+                isFetching:true,
+                error:''
+            })
+        case ('CALL_END'):
+            return ({
+                ...state,
+                isFetching: false,
+                smrf: action.payload,
+            })
+        case ('ADD_SMURF'):
+            return { ...state };
+        case ('SET_ERROR'):
+                return ({
+                    ...state,
+                    error: action.payload
+                })    
+        default:
+            return state
+}
 }
 
 export default reducer;
@@ -18,4 +45,4 @@ export default reducer;
 //      - The end of an api call
 //      - The adding a smurf to the smurf list when added into payload
 //      - Setting Error Text
-//      - Any other state changes you see as necessary
+//      - Any other state changes you see as 
