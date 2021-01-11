@@ -1,10 +1,29 @@
 import React from 'react';
+import { ReactReduxContext } from 'react-redux'
+import Smurf from './Smurf';
+import initialState from '../reducers/index'
 
 export class SmurfDisplay extends React.Component {
     render() {
-        return(<div>
-            
-        </div>)
+        if ({initialState : error}) {
+            return <h2>Something went wrong: {state.error}</h2>;
+          }
+        
+          if ({initialState : isLoading}) {
+            return <h2>Your smurf is being fetched!</h2>;
+          }
+        return (
+            <ReactReduxContext.Consumer>
+                {({ store }) => {
+                    return
+
+                    (<div>
+                        <Smurf></Smurf>
+                    </div>);
+
+                }}
+            </ReactReduxContext.Consumer>
+        )
     }
 }
 

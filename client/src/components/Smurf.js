@@ -1,11 +1,24 @@
 import React from 'react';
+import { ReactReduxContext } from 'react-redux'
 
 class Smurf extends React.Component {
     render() {
         const { smurf } = this.props;
 
-        return(<div data-testid="smurf" className="card">
-        </div>);
+        return (
+            <ReactReduxContext.Consumer>
+                {({ store }) => {
+                    return
+                    (<div data-testid="smurf" className="card">
+                        <p> {store.name}</p>
+                        <p> {store.position}</p>
+                        <p> {store.nickname}</p>
+                        <p> {store.description}</p>
+                    </div>);
+
+                }}
+            </ReactReduxContext.Consumer>
+        )
     }
 }
 
