@@ -1,59 +1,61 @@
 
 import { connect } from 'react-redux';
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import { addSmurf } from '../actions/index'
+import React from 'react';
 
 const mapStateToProps = state => {
     return {
-      name: state.name,
-      position: state.position,
-      nickname: state.nickname,
-      description: state.description
+        name: state.name,
+        position: state.position,
+        nickname: state.nickname,
+        description: state.description
     };
-  };
-  const [formData, setFormData] = useState({
-    name: '',
-    position: '',
-    nickname: '',
-    description: ''
-});
+};
+
 
 class AddForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { name: '', position: '', nickname: '', description: '', error: '' };
+        this.handleChange = this.handleChange.bind(this);
+    }
 
-   
-    
-      handleChange(event) {
-        this.setState({value: event.target.value});
-      }
-     
-     
+
+
+    handleChange(event) {
+        event.preventDefault();
+        this.setState({ name: event.target.value });
+    }
+
+
     render() {
-        return(<section>
+        return (<section>
             <h2>Add Smurf</h2>
-            <form>
-                <div className="form-group">
-                    <label htmlFor="name">Name:</label><br/>
-                    <input onChange={this.handleChange} name="name" id="name" />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="position">Position:</label><br/>
-                    <input onChange={this.handleChange} position="position" id="position" />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="description">Description:</label><br/>
-                    <input onChange={this.handleChange} description="description" id="description" />
-                </div>
+            <form onSubmit={console.log(addSmurf())}>
                 
+                <div className="form-group">
+                    <label htmlFor="name">Name:</label><br />
+                    <input value={this.state.value} onChange={this.handleChange} name="name" id="name" />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="position">Position:</label><br />
+                    <input value={this.state.value} onChange={this.handleChange} name="position" id="position" />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="description">Description:</label><br />
+                    <input value={this.state.value} onChange={this.handleChange} name="description" id="description" />
+                </div>
+
 
                 <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
-                <button>Submit Smurf</button>
+                <button type='submit'>Submit Smurf</button>
             </form>
         </section>);
     }
-    
+
 }
 
-export default connect( mapStateToProps, {AddForm})(AddForm);;
+export default connect(mapStateToProps, { AddForm })(AddForm);;
 
 //Task List:
 //1. Add in all necessary import components and library methods.

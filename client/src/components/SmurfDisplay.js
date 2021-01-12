@@ -1,27 +1,21 @@
 import React from 'react';
 import { ReactReduxContext } from 'react-redux'
 import Smurf from './Smurf';
-import initialState from '../reducers/index'
+import {  CALL_S,  getSmurf } from '../actions';
 
 export class SmurfDisplay extends React.Component {
     render() {
-        if ({initialState : error}) {
-            return <h2>Something went wrong: {state.error}</h2>;
-          }
-        
-          if ({initialState : isLoading}) {
-            return <h2>Your smurf is being fetched!</h2>;
-          }
+        getSmurf();
+        console.log(getSmurf())
+        ({initialState : CALL_S} )?  <p>Your smurf is being fetched!</p> : <p>Something went wrong: </p>; 
+       
         return (
             <ReactReduxContext.Consumer>
-                {({ store }) => {
-                    return
+
 
                     (<div>
                         <Smurf></Smurf>
                     </div>);
-
-                }}
             </ReactReduxContext.Consumer>
         )
     }
