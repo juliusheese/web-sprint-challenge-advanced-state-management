@@ -2,8 +2,15 @@ import axios from 'axios';
 
 export const CALL_START = 'CALL_START';
 export const CALL_S = 'CALL_S';
-export const ADD_SMURF = 'FETCHING_PIC_SUCCESS';
-export const SET_ERROR = 'FETCHING_PIC_FAIL';
+export const ADD_SMURF = 'ADD_SMURF';
+export const SET_ERROR = 'SET_ERROR';
+export const GET_SMURF = 'GET_SMURF';
+
+export const callSmurf = (smurf) => {
+
+
+    return {type: GET_SMURF, payload.smurf}
+}
 
 
 export const getSmurf = () => {
@@ -16,7 +23,7 @@ export const getSmurf = () => {
                 dispatch({ type: CALL_S, payload: res.data })
             })
             .catch((err) => {
-                dispatch({ type: CALL_S, payload : err.response.message })
+                dispatch({ type: CALL_F, payload : err.response.message })
             })
          
     })

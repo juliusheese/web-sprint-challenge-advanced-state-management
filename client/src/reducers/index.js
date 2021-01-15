@@ -12,13 +12,12 @@ export const reducer = (state = initialState, action)=>{
             return ({
                 ...state,
                 isFetching:true,
-                error:''
             })
         case ('CALL_S'):
             return ({
                 ...state,
                 isFetching: false,
-                smrf: action.payload,
+                smurf: action.payload,
             })
         case ('CALL_F'):
             return ({
@@ -26,8 +25,16 @@ export const reducer = (state = initialState, action)=>{
                 isFetching: false,
                 error: action.payload,
             })
+        case ('GET_SMURF'):
+            return ({...state, isFetching: false, smurf: action.smurf
+
+        })
         case ('ADD_SMURF'):
-            return { ...state };
+            
+            return {...state, 
+            arrSmurf: [...state.smurf, action.payload],
+            isFetching: false,
+            };
         case ('SET_ERROR'):
                 return ({
                     ...state,
